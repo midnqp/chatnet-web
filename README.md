@@ -20,3 +20,44 @@ function Card(props) {
 }
 ```
 
+a component function cannot be async:
+```jsx
+async function getNotesData() {
+  const dataList = await (await fetch('/notes.json')).json()
+  return dataList
+}
+
+function CardList() {
+  const [dataList, setDataList] = useState([])
+
+  useEffect(() => {
+    getNotesData().then(dataList => setDataList(dataList))
+  }, [])
+
+  return dataList.map(data => <Card title={data.title} text={data.text} />)
+}
+```
+
+a component can have children:
+```jsx
+function ImageCard(props) {
+  return (
+    <>
+      <img src={props.imageUrl}/>
+      {props.children}          
+    </>    
+  )
+}
+
+function Caption(props) {
+  return <p>{props.text}</p>
+}
+
+export default function ImageViewer() {
+  return (
+    <ImageCard imageUrl='https://i.imgur.com/YfeOqp2s.jpg'>
+      <Caption text='caption of an image' />    
+    </ImageCard>
+  )
+}
+```
