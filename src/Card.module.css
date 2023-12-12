@@ -1,0 +1,23 @@
+:root {
+--card-width: 800px;
+}
+
+.Card {
+    border-radius: 8px;
+    border: 2px dashed grey;
+    background-color: lightyellow;
+    padding: 8px;
+    /**width: 400px;
+    margin: 8px;**/
+    width: 800px;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 8px; 
+    margin-bottom: 8px;
+}
+
+.CardImage {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+}
